@@ -30,11 +30,10 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: 'dist',
+    outDir: path.resolve(__dirname, 'dist'),
+    emptyOutDir: true,
     rollupOptions: {
-      input: {
-        main: 'index.html'
-      }
+      input: path.resolve(__dirname, 'client/index.html')
     }
   }
 });
