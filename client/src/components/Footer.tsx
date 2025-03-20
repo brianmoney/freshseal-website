@@ -13,8 +13,11 @@ export default function Footer() {
               <h2 className="text-xl font-semibold">FreshSeal</h2>
             </div>
             <p className="text-neutral-300 max-w-md">
-              Discover high-quality products carefully selected to enhance your life. 
-              We partner with Amazon to bring you a seamless shopping experience.
+              SEAL. STORE. ENJOY. 
+            </p>
+            <p className="text-neutral-300 max-w-md mt-2">
+              Our vacuum-seal storage solutions help preserve food freshness for longer
+              while reducing waste and saving you money.
             </p>
           </div>
           
@@ -24,12 +27,12 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li>
                   <a href="#product1" className="text-neutral-300 hover:text-white transition">
-                    Storage Containers
+                    Glass Containers
                   </a>
                 </li>
                 <li>
                   <a href="#product2" className="text-neutral-300 hover:text-white transition">
-                    Vacuum Sealer
+                    Storage Containers
                   </a>
                 </li>
               </ul>

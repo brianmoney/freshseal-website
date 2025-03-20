@@ -9,7 +9,7 @@ export default function Hero() {
           Keep Food <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-teal-500">Fresher</span> for Longer
         </h1>
         <p className="text-lg text-neutral-500 max-w-2xl mx-auto mb-8">
-          Discover FreshSeal's premium food storage solutions, designed to preserve freshness and reduce waste. Available for purchase on Amazon.
+          Discover FreshSeal's premium vacuum-seal food storage solutions, designed to preserve freshness up to 5x longer and reduce food waste. Available for purchase on Amazon.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Button
@@ -18,7 +18,7 @@ export default function Hero() {
             className="inline-flex items-center bg-green-600 hover:bg-green-700"
           >
             <a href="#product1">
-              View Storage Containers
+              View Glass Containers
               <ChevronRight className="h-5 w-5 ml-1" />
             </a>
           </Button>
@@ -29,7 +29,7 @@ export default function Hero() {
             className="inline-flex items-center"
           >
             <a href="#product2">
-              View Vacuum Sealer
+              View Storage Containers
               <ChevronRight className="h-5 w-5 ml-1" />
             </a>
           </Button>
