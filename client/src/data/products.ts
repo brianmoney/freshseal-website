@@ -30,8 +30,8 @@ export const products: Product[] = [
       "Includes Hand Vacuum Pump & 10 Vacuum Bags",
       "Microwave, Freezer & Dishwasher Safe Glass Containers"
     ],
-    price: "39.99",
-    originalPrice: "49.99",
+    price: "74.95",
+    originalPrice: "89.99",
     rating: "4.8",
     reviewCount: 527,
     amazonLink: "https://www.amazon.com/dp/B0DPNCSC84"
@@ -54,10 +54,10 @@ export const products: Product[] = [
       "Includes Hand Vacuum Pump & 10 Vacuum Bags",
       "Modular System for Organized Food Storage"
     ],
-    price: "34.99",
+    price: "39.95",
     originalPrice: "44.99",
-    rating: "4.7",
-    reviewCount: 683,
+    rating: "4.2",
+    reviewCount: 102,
     amazonLink: "https://www.amazon.com/dp/B0DPJC1VJP"
   }
 ];
