@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, Package } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
@@ -14,8 +14,12 @@ export default function Header() {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <Package className="h-8 w-8 text-primary" />
-          <h1 className="text-xl font-semibold text-neutral-800">Premium Products</h1>
+          <img 
+            src="/images/freshseal-logo.png" 
+            alt="FreshSeal Logo" 
+            className="h-12 w-auto" 
+          />
+          <h1 className="text-xl font-semibold text-neutral-800">FreshSeal</h1>
         </div>
         <nav className="hidden md:flex space-x-6">
           <a href="#product1" className="text-neutral-500 hover:text-primary transition">

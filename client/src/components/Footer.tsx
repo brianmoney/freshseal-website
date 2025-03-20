@@ -1,5 +1,3 @@
-import { Package } from "lucide-react";
-
 export default function Footer() {
   return (
     <footer className="bg-neutral-800 text-white pt-12 pb-6">
@@ -7,8 +5,12 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between mb-8">
           <div className="mb-6 md:mb-0">
             <div className="flex items-center space-x-2 mb-4">
-              <Package className="h-8 w-8 text-primary" />
-              <h2 className="text-xl font-semibold">Premium Products</h2>
+              <img 
+                src="/images/freshseal-logo.png" 
+                alt="FreshSeal Logo" 
+                className="h-10 w-auto" 
+              />
+              <h2 className="text-xl font-semibold">FreshSeal</h2>
             </div>
             <p className="text-neutral-300 max-w-md">
               Discover high-quality products carefully selected to enhance your life. 
