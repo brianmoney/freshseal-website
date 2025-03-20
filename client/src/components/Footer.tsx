@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer() {
   return (
     <footer className="bg-neutral-800 text-white pt-12 pb-6">
@@ -79,14 +81,14 @@ export default function Footer() {
               <h3 className="text-lg font-semibold mb-2">Product Manuals</h3>
               <ul>
                 <li>
-                  <a href="/manuals/FS0101" className="text-neutral-300 hover:text-emerald-400 transition">
+                  <Link href="/manuals/fs0101" className="text-neutral-300 hover:text-emerald-400 transition">
                     FS0101 Manual
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/manuals/FS0102" className="text-neutral-300 hover:text-emerald-400 transition">
+                  <Link href="/manuals/fs0102" className="text-neutral-300 hover:text-emerald-400 transition">
                     FS0102 Manual
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
