@@ -23,10 +23,10 @@ export default function Header() {
         </div>
         <nav className="hidden md:flex space-x-6">
           <a href="#product1" className="text-neutral-500 hover:text-primary transition">
-            Product 1
+            Storage Containers
           </a>
           <a href="#product2" className="text-neutral-500 hover:text-primary transition">
-            Product 2
+            Vacuum Sealer
           </a>
           <a href="#about" className="text-neutral-500 hover:text-primary transition">
             About
@@ -51,14 +51,14 @@ export default function Header() {
             className="block py-2 text-neutral-500 hover:text-primary"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Product 1
+            Storage Containers
           </a>
           <a
             href="#product2"
             className="block py-2 text-neutral-500 hover:text-primary"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Product 2
+            Vacuum Sealer
           </a>
           <a
             href="#about"

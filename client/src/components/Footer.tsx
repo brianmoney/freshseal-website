@@ -24,12 +24,12 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li>
                   <a href="#product1" className="text-neutral-300 hover:text-white transition">
-                    Product 1
+                    Storage Containers
                   </a>
                 </li>
                 <li>
                   <a href="#product2" className="text-neutral-300 hover:text-white transition">
-                    Product 2
+                    Vacuum Sealer
                   </a>
                 </li>
               </ul>
@@ -76,7 +76,7 @@ export default function Footer() {
         
         <div className="border-t border-neutral-700 pt-6 mt-6 text-center text-neutral-400 text-sm">
           <p>
-            © {new Date().getFullYear()} Premium Products. All rights reserved. 
+            © {new Date().getFullYear()} FreshSeal. All rights reserved. 
             This site contains affiliate links to Amazon. We may earn a commission 
             for purchases made through these links.
           </p>
