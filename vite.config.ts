@@ -32,8 +32,17 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
+    sourcemap: true,
     rollupOptions: {
       input: path.resolve(__dirname, 'client/index.html')
+    }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      }
     }
   }
 });
