@@ -16,7 +16,7 @@ export default function Home() {
         <ProductDetails 
           product={products[1]} 
           id="product2" 
-          bgColor="bg-gray-50" 
+          bgColor="bg-emerald-50" 
           reversed={true} 
         />
         <AboutSection />

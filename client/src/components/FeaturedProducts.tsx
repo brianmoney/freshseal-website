@@ -7,9 +7,12 @@ interface FeaturedProductsProps {
 
 export default function FeaturedProducts({ products }: FeaturedProductsProps) {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-green-50">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold mb-10">Featured Products</h2>
+        <h2 className="text-3xl font-bold mb-4">FreshSeal Products</h2>
+        <p className="text-neutral-500 max-w-2xl mx-auto mb-10">
+          Our innovative food storage solutions help you preserve freshness, reduce waste, and save money.
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {products.map((product, index) => (
