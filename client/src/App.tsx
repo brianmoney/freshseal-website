@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ManualPage from './pages/ManualPage';
-import FS0101 from '../../pages/FS0101';
+import FS0101 from '@/pages/FS0101';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/manuals/:manualId" element={<ManualPage />} />
+          <Route path="/pages/FS0101" element={<FS0101 />} />
           <Route path="/pages/:manualId" element={<ManualPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
