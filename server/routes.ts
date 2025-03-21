@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import path from "path";
 import { storage } from "./storage";
+import express from 'express';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Define API routes if needed
@@ -11,6 +12,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       message: 'Products API endpoint'
     });
   });
+
+  // Serve static files from the 'pages' directory
+  app.use('/pages', express.static(path.resolve(__dirname, '../client/src/pages')));
 
   // Add catch-all route for client-side routing
   app.get('*', (req, res, next) => {
