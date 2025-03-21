@@ -31,18 +31,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Add catch-all route for client-side routing
-  app.get('*', (req, res, next) => {
-    console.log(`Catch-all route triggered for: ${req.url}`); // Log the URL
+  // Static files second (if any)
+  const publicPath = path.resolve(__dirname, '../public');
+  if (fs.existsSync(publicPath)) {
+    app.use(express.static(publicPath));
+  }
 
-    // Skip this handler for API routes
+  // Catch-all route last - this ensures React Router handles all other routes
+  app.get('*', (req, res) => {
     if (req.url.startsWith('/api')) {
-      console.log(`Skipping catch-all for: ${req.url}`); // Log when skipping
-      return next();
+      return res.status(404).json({ error: 'API endpoint not found' });
     }
-
-    // Simply send index.html for all non-api routes
-    console.log(`Serving index.html for: ${req.url}`); // Log when serving index.html
     res.sendFile(path.resolve(__dirname, '../client/index.html'));
   });
 

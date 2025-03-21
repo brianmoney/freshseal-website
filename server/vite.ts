@@ -50,32 +50,21 @@ export async function setupVite(app: Express, server: Server) {
 
   app.use(vite.middlewares);
   
-  // Handle API routes first
-  app.use('/api', (req, res, next) => {
-    if (req.url.startsWith('/api')) {
-      return next();
-    }
-  });
-
-  // Handle all other routes
+  // Handle all non-asset routes
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
+
+    // Skip API routes
     if (url.startsWith('/api')) {
       return next();
     }
 
-    // Remove any /pages static file checking and always fallback:
     try {
       const clientTemplate = path.resolve(__dirname, "..", "client", "index.html");
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
-      template = template.replace(
-        `src="/src/main.tsx"`,
-        `src="/src/main.tsx?v=${nanoid()}"`
-      );
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
-      vite.ssrFixStacktrace(e as Error);
       next(e);
     }
   });
