@@ -15,11 +15,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Add a test API endpoint
   app.get('/api/test', (_req, res) => {
-    console.log('Test API endpoint was hit!'); // Add log here
-    res.json({
-      status: 'success',
-      message: 'Test API endpoint'
-    });
+    try {
+      console.log('Test API endpoint was hit!'); // Add log here
+      res.json({
+        status: 'success',
+        message: 'Test API endpoint'
+      });
+    } catch (error) {
+      console.error('Error in /api/test:', error);
+      res.status(500).json({
+        status: 'error',
+        message: 'Internal Server Error'
+      });
+    }
   });
 
   // Serve static files from the 'pages' directory
