@@ -14,12 +14,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Serve static files from the 'pages' directory
-  app.use('/pages', express.static(path.resolve(__dirname, '../client/src/pages')));
+  const pagesPath = path.resolve(__dirname, '../client/src/pages');
+  app.use('/pages', express.static(pagesPath));
 
   // Add catch-all route for client-side routing
   app.get('*', (req, res, next) => {
-    // Skip this handler for API routes
-    if (req.url.startsWith('/api')) {
+    // Skip this handler for API routes and /pages route
+    if (req.url.startsWith('/api') || req.url.startsWith('/pages')) {
       return next();
     }
     res.sendFile(path.resolve(__dirname, '../client/index.html'));
