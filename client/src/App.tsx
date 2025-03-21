@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/manuals/:manualId" element={<ManualPage />} />
-          <Route path="/pages/fs0101_manual" element={<FS0101 />} />
+          <Route path="/pages/:manualId" element={<ManualPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster />
