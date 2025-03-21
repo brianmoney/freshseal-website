@@ -1,74 +1,32 @@
-import { useState } from "react";
-import { Link } from "wouter";
-import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button"
+import { ShoppingCart } from "lucide-react";
 
-export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
+const Header = () => {
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <img 
-            src="/images/freshseal-logo.png" 
-            alt="FreshSeal Logo" 
-            className="h-12 w-auto" 
-          />
-          <h1 className="text-xl font-semibold text-neutral-800">FreshSeal</h1>
-        </div>
-        <nav className="hidden md:flex space-x-6">
-          <a href="#product1" className="text-neutral-500 hover:text-primary transition">
-            Glass Containers
-          </a>
-          <a href="#product2" className="text-neutral-500 hover:text-primary transition">
-            Storage Containers
-          </a>
-          <a href="#about" className="text-neutral-500 hover:text-primary transition">
-            About
-          </a>
+    <header className="bg-white py-4 shadow-md">
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="text-2xl font-bold text-gray-800">
+          FreshSeal
+        </Link>
+
+        {/* Navigation */}
+        <nav>
+          <ul className="flex items-center space-x-6">
+            <li><Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link></li>
+            <li><a href="#products" className="text-gray-600 hover:text-gray-800">Products</a></li>
+            <li><a href="#about" className="text-gray-600 hover:text-gray-800">About</a></li>
+            <li><a href="#contact" className="text-gray-600 hover:text-gray-800">Contact</a></li>
+          </ul>
         </nav>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          <Menu className="h-6 w-6" />
-        </Button>
+
+        {/* Cart Button */}
+        <Button><ShoppingCart className="mr-2" size={16}/> Cart</Button>
       </div>
-      
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden px-4 py-2 bg-white border-t border-gray-100">
-          <a
-            href="#product1"
-            className="block py-2 text-neutral-500 hover:text-primary"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Glass Containers
-          </a>
-          <a
-            href="#product2"
-            className="block py-2 text-neutral-500 hover:text-primary"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Storage Containers
-          </a>
-          <a
-            href="#about"
-            className="block py-2 text-neutral-500 hover:text-primary"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            About
-          </a>
-        </div>
-      )}
     </header>
   );
-}
+};
+
+export default Header;

@@ -5,7 +5,7 @@ export default function FS0101Manual() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow container mx-auto px-4 py-8">
+      <main className="flex-grow container mx-auto px-4 py-8 bg-white">
         <h1 className="text-3xl font-bold mb-6">FS0101 Product Manual</h1>
         <div className="prose max-w-none">
           <h2 className="text-2xl font-semibold mt-6">Using Your Hand-Pumped Vacuum-Sealed Food Storage Containers</h2>
