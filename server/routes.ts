@@ -1,7 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import path from "path";
-import { storage } from "./storage";
 import express from 'express';
 import fs from 'fs';
 
@@ -31,21 +30,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Static files second (if any)
-  const publicPath = path.resolve(__dirname, '../public');
-  if (fs.existsSync(publicPath)) {
-    app.use(express.static(publicPath));
-  }
+  // Serve client files from the correct directory
+  const clientPath = path.resolve(__dirname, '../client');
+  console.log('Client path:', clientPath);
 
-  // Catch-all route last - this ensures React Router handles all other routes
+  // Single catch-all route for SPA
   app.get('*', (req, res) => {
+    console.log('Handling request for:', req.url);
+    
+    // API 404 handler
     if (req.url.startsWith('/api')) {
       return res.status(404).json({ error: 'API endpoint not found' });
     }
-    res.sendFile(path.resolve(__dirname, '../client/index.html'));
+
+    // Serve index.html for all other routes
+    const indexPath = path.resolve(clientPath, 'index.html');
+    console.log('Serving index.html from:', indexPath);
+    
+    if (!fs.existsSync(indexPath)) {
+      console.error('index.html not found at:', indexPath);
+      return res.status(404).send('index.html not found');
+    }
+
+    res.sendFile(indexPath);
   });
 
-  const httpServer = createServer(app);
-
-  return httpServer;
+  return createServer(app);
 }

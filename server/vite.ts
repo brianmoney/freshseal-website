@@ -50,9 +50,10 @@ export async function setupVite(app: Express, server: Server) {
 
   app.use(vite.middlewares);
   
-  // Handle all non-asset routes
-  app.use("*", async (req, res, next) => {
+  // Single catch-all route for development
+  app.use('*', async (req, res, next) => {
     const url = req.originalUrl;
+    console.log('Vite handling request for:', url);
 
     // Skip API routes
     if (url.startsWith('/api')) {
@@ -60,33 +61,27 @@ export async function setupVite(app: Express, server: Server) {
     }
 
     try {
-      const clientTemplate = path.resolve(__dirname, "..", "client", "index.html");
-      let template = await fs.promises.readFile(clientTemplate, "utf-8");
-      const page = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      const clientPath = path.resolve(__dirname, '../client');
+      const indexPath = path.resolve(clientPath, 'index.html');
+      console.log('Reading template from:', indexPath);
+
+      if (!fs.existsSync(indexPath)) {
+        console.error('index.html not found at:', indexPath);
+        return res.status(404).send('index.html not found');
+      }
+
+      const template = await fs.promises.readFile(indexPath, 'utf-8');
+      const html = await vite.transformIndexHtml(url, template);
+      res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
     } catch (e) {
+      console.error('Error processing request:', e);
       next(e);
     }
   });
 }
 
+// Remove or simplify serveStatic as it's not needed in development
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(__dirname, "public");
-
-  if (!fs.existsSync(distPath)) {
-    throw new Error(
-      `Could not find the build directory: ${distPath}, make sure to build the client first`,
-    );
-  }
-
-  // Serve static files
-  app.use(express.static(distPath));
-
-  // Serve index.html for all routes except /api routes
-  app.get('*', (req, res, next) => {
-    if (req.url.startsWith('/api')) {
-      return next();
-    }
-    res.sendFile(path.resolve(distPath, "index.html"));
-  });
+  // This should only run in production
+  console.log('serveStatic called - this should only run in production');
 }
