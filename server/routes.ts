@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import path from "path";
 import { storage } from "./storage";
 import express from 'express';
+import fs from 'fs';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Define API routes if needed
@@ -39,11 +40,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get('*', (req, res, next) => {
     console.log(`Catch-all route triggered for: ${req.url}`); // Log the URL
 
-    // Skip this handler for API routes and /pages route
-    if (req.url.startsWith('/api') || req.url.startsWith('/pages')) {
+    // Skip this handler for API routes
+    if (req.url.startsWith('/api')) {
       console.log(`Skipping catch-all for: ${req.url}`); // Log when skipping
       return next();
     }
+
+    // Check if the requested file exists in the static pages directory
+    const filePath = path.resolve(pagesPath, '.' + req.path);
+    if (req.url.startsWith('/pages') && fs.existsSync(filePath)) {
+      console.log(`Serving static file for: ${req.url}`); // Log when serving static file
+      return res.sendFile(filePath);
+    }
+
     console.log(`Serving index.html for: ${req.url}`); // Log when serving index.html
     res.sendFile(path.resolve(__dirname, '../client/index.html'));
   });
