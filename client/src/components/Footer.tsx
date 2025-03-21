@@ -79,12 +79,12 @@ export default function Footer() {
               <h3 className="text-lg font-semibold mb-2">Product Manuals</h3>
               <ul>
                 <li>
-                  <a href="/pages/FS0101" className="text-neutral-300 hover:text-emerald-400 transition">
+                  <a href="/pages/fs0101-manual" className="text-neutral-300 hover:text-emerald-400 transition">
                     FS0101 Manual
                   </a>
                 </li>
                 <li>
-                  <a href="/pages/FS0102" className="text-neutral-300 hover:text-emerald-400 transition">
+                  <a href="/pages/fs0102-manual" className="text-neutral-300 hover:text-emerald-400 transition">
                     FS0102 Manual
                   </a>
                 </li>

@@ -14,7 +14,6 @@ const Header = () => {
              alt="FreshSeal Logo" 
              className="h-12 w-auto" 
            />
-          <h1 className="text-xl font-semibold text-neutral-800">FreshSeal</h1>
         </Link>
 
         {/* Navigation */}
