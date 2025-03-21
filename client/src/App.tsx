@@ -13,10 +13,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/manuals/:manualId" element={<ManualPage />} />
           <Route path="/pages/FS0101" element={<FS0101 />} />
+          <Route path="/manuals/:manualId" element={<ManualPage />} />
           <Route path="/pages/:manualId" element={<ManualPage />} />
+          <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster />
