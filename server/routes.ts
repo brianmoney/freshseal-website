@@ -13,6 +13,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  // Add a test API endpoint
+  app.get('/api/test', (_req, res) => {
+    console.log('Test API endpoint was hit!'); // Add log here
+    res.json({
+      status: 'success',
+      message: 'Test API endpoint'
+    });
+  });
+
   // Serve static files from the 'pages' directory
   const pagesPath = path.resolve(__dirname, '../client/src/pages');
   console.log(`Serving static files from: ${pagesPath}`); // Log the static file path
