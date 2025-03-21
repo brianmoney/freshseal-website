@@ -9,7 +9,12 @@ const Header = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-gray-800">
-          FreshSeal
+        <img 
+             src="/images/freshseal-logo.png" 
+             alt="FreshSeal Logo" 
+             className="h-12 w-auto" 
+           />
+          <h1 className="text-xl font-semibold text-neutral-800">FreshSeal</h1>
         </Link>
 
         {/* Navigation */}
