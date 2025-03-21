@@ -66,12 +66,15 @@ export async function setupVite(app: Express, server: Server) {
       return next();
     }
 
-    // Check if the requested file exists in the static pages directory
-    const pagesPath = path.resolve(__dirname, '../client/src/pages');
-    const filePath = path.resolve(pagesPath, '.' + req.path);
-    if (url.startsWith('/pages') && fs.existsSync(filePath)) {
-      console.log(`Serving static file for: ${url}`); // Log when serving static file
-      return res.sendFile(filePath);
+    // For /pages routes, remove the prefix before checking
+    if (url.startsWith('/pages')) {
+      const pagesPath = path.resolve(__dirname, '../client/src/pages');
+      const relativePath = req.path.replace(/^\/pages/, '');
+      const filePath = path.resolve(pagesPath, '.' + relativePath);
+      if (fs.existsSync(filePath)) {
+        console.log(`Serving static file for: ${url}`);
+        return res.sendFile(filePath);
+      }
     }
 
     try {

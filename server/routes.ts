@@ -46,11 +46,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return next();
     }
 
-    // Check if the requested file exists in the static pages directory
-    const filePath = path.resolve(pagesPath, '.' + req.path);
-    if (req.url.startsWith('/pages') && fs.existsSync(filePath)) {
-      console.log(`Serving static file for: ${req.url}`); // Log when serving static file
-      return res.sendFile(filePath);
+    // For /pages routes, remove the prefix before checking
+    if (req.url.startsWith('/pages')) {
+      const relativePath = req.path.replace(/^\/pages/, '');
+      const filePath = path.resolve(pagesPath, '.' + relativePath);
+      if (fs.existsSync(filePath)) {
+        console.log(`Serving static file for: ${req.url}`); // Log when serving static file
+        return res.sendFile(filePath);
+      }
     }
 
     console.log(`Serving index.html for: ${req.url}`); // Log when serving index.html
