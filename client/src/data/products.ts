@@ -13,7 +13,7 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    name: "Glass Vacuum Sealable Container Set for Food Storage",
+    name: "Glass Vacuum Sealable Container Set for Food Storage with Hand Pump",
     shortDescription: "9 Pieces, 6 Sizes, with Hand Vacuum Pump and 10 Vacuum Sealable Bags",
     description: "Keep your food fresher for longer with FreshSeal Glass Vacuum Sealable Container Set. This 9-piece set features 6 different sizes of premium glass containers with vacuum-sealable lids, a hand vacuum pump, and 10 vacuum sealable bags. Perfect for meal prep, leftovers, and extending the shelf life of your food.",
     images: [
