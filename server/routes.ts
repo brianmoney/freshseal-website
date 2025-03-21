@@ -34,6 +34,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const clientPath = path.resolve(__dirname, '../client');
   console.log('Client path:', clientPath);
 
+  // Serve static files first
+  app.use(express.static(path.resolve(__dirname, '../client/dist')));
+
   // Single catch-all route for SPA
   app.get('*', (req, res) => {
     console.log('Handling request for:', req.url);
@@ -43,16 +46,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(404).json({ error: 'API endpoint not found' });
     }
 
-    // Serve index.html for all other routes
-    const indexPath = path.resolve(clientPath, 'index.html');
-    console.log('Serving index.html from:', indexPath);
-    
-    if (!fs.existsSync(indexPath)) {
-      console.error('index.html not found at:', indexPath);
-      return res.status(404).send('index.html not found');
-    }
-
-    res.sendFile(indexPath);
+    // Always serve index.html for client-side routing
+    res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
   });
 
   return createServer(app);
