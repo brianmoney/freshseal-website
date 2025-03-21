@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ManualPage from './pages/ManualPage';
-import FS0101 from '@/pages/FS0101';
+import FS0101 from '@/pages/fs0101-manual';
 
 function App() {
   return (
