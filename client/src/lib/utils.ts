@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 // Add smooth scrolling for anchor links
 export function setupSmoothScrolling() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function(this: void, e) {
       e.preventDefault();
       
       const href = this.getAttribute('href');
