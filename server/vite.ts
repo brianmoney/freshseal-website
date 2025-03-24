@@ -84,4 +84,9 @@ export async function setupVite(app: Express, server: Server) {
 export function serveStatic(app: Express) {
   // This should only run in production
   console.log('serveStatic called - this should only run in production');
+  
+  // Fallback route for client-side routing in production
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../dist", "index.html"));
+  });
 }
